@@ -1,0 +1,3288 @@
+
+:root{
+  --bg:#0d1117;--panel:#161b22;--panel2:#1f2630;--text:#f0f6fc;--muted:#8b949e;
+  --line:#30363d;--accent:#58a6ff;--good:#3fb950;--warn:#d29922;--bad:#f85149;
+  --cyan:#39c5cf;--purple:#bc8cff;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{
+  margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);
+  background:radial-gradient(circle at 15% 0%,#172436 0,#0d1117 34%,#111827 100%);min-height:100vh
+}
+button,input,select,textarea{font:inherit}
+button{
+  border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:10px 13px;
+  border-radius:10px;cursor:pointer;font-weight:750
+}
+button:hover{border-color:#66717c}
+button.primary{background:var(--accent);color:#071321;border-color:transparent}
+button.danger{color:#ffb4b0}
+button.iconBtn{padding:6px 9px}
+input,select,textarea{
+  width:100%;background:#0d1117;border:1px solid var(--line);color:var(--text);
+  padding:9px 10px;border-radius:9px;outline:none
+}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+.wrap{max-width:1260px;margin:0 auto;padding:26px 18px 50px}
+.topbar,.sectionHead,.status{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.eyebrow{font-size:11px;letter-spacing:.16em;color:#75baff;font-weight:900;margin-bottom:5px}
+h1{margin:0 0 6px;font-size:34px;letter-spacing:-.03em}
+h2{margin:0;font-size:18px}
+p{margin:5px 0}
+.sub,.muted,.sectionHead p,footer,.tiny{color:var(--muted);font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions.spaced{margin-top:15px}
+.card{
+  background:rgba(22,27,34,.96);border:1px solid var(--line);border-radius:16px;padding:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,.18);margin-bottom:16px
+}
+.card.compact{padding:13px 16px}
+.statusRight{display:flex;gap:8px;flex-wrap:wrap}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:16px 0}
+.metricCard{min-height:118px}
+.label{color:var(--muted);font-size:11px;margin-bottom:7px;text-transform:uppercase;letter-spacing:.05em;font-weight:800}
+.metric{font-size:28px;font-weight:900;letter-spacing:-.03em}
+.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#202938;color:#c9d1d9;font-size:12px}
+.statusText{font-weight:800}
+.actionCentre{border-color:#2b4d69;background:linear-gradient(135deg,#161b22,#112131)}
+.actionList{display:grid;gap:9px;margin-top:13px}
+.action{
+  display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+  padding:12px 13px;background:#0e151d;border:1px solid #273746;border-radius:12px
+}
+.actionIcon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#1b2835;font-weight:900}
+.action.high{border-color:#75424a}.action.high .actionIcon{background:#472229}
+.action.medium{border-color:#66531f}.action.medium .actionIcon{background:#3b3016}
+.action.good{border-color:#285c39}.action.good .actionIcon{background:#173820}
+.actionTitle{font-weight:850;font-size:14px}.actionText{font-size:12px;color:var(--muted);margin-top:3px}
+.actionMoney{font-weight:900;white-space:nowrap}
+.marketCard{border-color:#29435c;background:linear-gradient(135deg,rgba(22,27,34,.98),rgba(15,34,48,.98))}
+.marketGrid{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:12px;margin-top:14px}
+.marketTile{background:#0e151d;border:1px solid #263b4c;border-radius:13px;padding:15px}
+.marketLinkTile{display:block;color:inherit;text-decoration:none;transition:.12s ease}
+.marketLinkTile:hover{transform:translateY(-1px);border-color:#4f86aa;background:#111c26}
+.marketRate{font-size:31px;font-weight:950;letter-spacing:-.04em}
+.marketName{font-weight:800;margin-top:4px}
+.bestMove{font-size:15px;line-height:1.45;font-weight:800}
+.sourceHint{margin-top:10px;color:var(--accent);font-size:12px;font-weight:900}
+.opportunities{display:grid;gap:9px;margin-top:12px}
+.opp{
+  border:1px solid var(--line);background:#0f151c;border-radius:12px;padding:13px 14px;
+  display:flex;justify-content:space-between;gap:15px;align-items:center
+}
+.opp.good{border-color:#255f35}.opp.warn{border-color:#624c20}
+.oppMain{min-width:0}.oppMain strong{display:block;margin-bottom:4px}.oppMoney{font-size:18px;font-weight:950;white-space:nowrap}
+.sourceBtn{
+  display:inline-block;margin-top:9px;padding:7px 10px;border-radius:8px;border:1px solid #33516a;
+  background:#101b25;color:#8ec7ff;text-decoration:none;font-size:12px;font-weight:900
+}
+.sourceBtn:hover{border-color:var(--accent);background:#132334}
+.twoPanel{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.targetInputs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}
+label{font-size:12px;color:var(--muted)}
+label input,label select,label textarea{margin-top:6px}
+.progress{height:14px;background:#0d1117;border:1px solid var(--line);overflow:hidden;border-radius:999px;margin:15px 0 9px}
+#progressBar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--good))}
+.projectionNote{margin-top:12px;padding:10px 12px;border-radius:10px;background:#101821;border:1px solid #273543;color:#bdc7d1;font-size:13px}
+.scenarioGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:13px 0}
+.scenario{border:1px solid var(--line);border-radius:11px;padding:11px;background:#10161d}
+.scenario.selected{border-color:#376f9d;background:#102031}
+.scenarioValue{font-size:20px;font-weight:900;margin-bottom:4px}
+canvas{width:100%;display:block;background:#0d131a;border:1px solid #25313b;border-radius:11px}
+.tableWrap{overflow:auto;margin-top:10px}
+table{width:100%;border-collapse:collapse;min-width:1120px}
+th,td{padding:11px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+td{font-size:14px}
+.accountName{font-weight:850}.accountProvider{font-size:11px;color:var(--muted);margin-top:2px}
+.accountPlan{font-size:11px;color:#b8c4cf;line-height:1.4;min-width:150px}
+.typePill{padding:4px 7px;border-radius:7px;background:#202938;font-size:11px}
+.rowActions{display:flex;gap:6px}
+.rowActions button{padding:7px 9px;font-size:12px}
+.fxRow{max-width:220px;margin-top:12px}
+.costList,.switchList{display:grid;gap:8px;margin-top:12px}
+.costRow,.switchRow{
+  display:grid;grid-template-columns:1.4fr .8fr auto;gap:8px;align-items:center;
+  padding:9px;background:#0f151c;border:1px solid var(--line);border-radius:10px
+}
+.switchRow{grid-template-columns:1fr .6fr .8fr auto}
+.miniBtn{padding:7px 9px}
+.budgetSummary{margin-top:13px;border-top:1px solid var(--line);padding-top:11px;display:grid;gap:7px}
+.budgetSummary div{display:flex;justify-content:space-between;gap:15px}
+.budgetSummary strong{font-size:17px}
+.settingsGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.hidden{display:none!important}
+footer{padding:8px 3px}
+dialog{border:none;border-radius:16px;padding:0;background:transparent;color:var(--text);width:min(760px,calc(100vw - 28px))}
+dialog::backdrop{background:rgba(0,0,0,.68);backdrop-filter:blur(4px)}
+.dialogCard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:14px}
+.dialogHead{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}
+.dialogHead p{color:var(--muted);font-size:13px}
+hr{border:none;border-top:1px solid var(--line);width:100%}
+.infoBox{background:#0f1721;border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:#c9d1d9;font-size:13px}
+.twoCol{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.threeCol{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+textarea{resize:vertical}
+@media(max-width:950px){
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .marketGrid{grid-template-columns:1fr 1fr}.opportunityTile{grid-column:1/-1}
+  .twoPanel{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .wrap{padding:18px 12px 36px}h1{font-size:27px}
+  .topbar,.sectionHead,.status{flex-direction:column;align-items:stretch}
+  .actions button{flex:1}.metrics{grid-template-columns:1fr 1fr}
+  .metric{font-size:22px}.marketGrid{grid-template-columns:1fr}
+  .opportunityTile{grid-column:auto}.targetInputs,.scenarioGrid,.settingsGrid,.twoCol,.threeCol{grid-template-columns:1fr}
+  .action{grid-template-columns:auto 1fr}.actionMoney{grid-column:2}
+  .costRow,.switchRow{grid-template-columns:1fr}.opp{align-items:flex-start;flex-direction:column}
+}
+
+
+/* V3.0.3 — iPhone Safari stability */
+html{
+  -webkit-text-size-adjust:100%;
+}
+body{
+  overscroll-behavior-y:none;
+}
+canvas{
+  display:block;
+  width:100% !important;
+  max-width:100%;
+  min-width:0;
+  box-sizing:border-box;
+}
+#projectionChart{
+  height:190px !important;
+  max-height:190px !important;
+  min-height:190px !important;
+}
+#rateHistoryChart{
+  height:220px !important;
+  max-height:220px !important;
+  min-height:220px !important;
+}
+
+/* Prevent long text/URLs from widening cards on iOS */
+.card,
+.marketTile,
+.action,
+.opp,
+.twoPanel > *{
+  min-width:0;
+}
+.actionTitle,
+.actionText,
+.bestMove,
+.marketName,
+.oppMain,
+.projectionNote{
+  overflow-wrap:anywhere;
+}
+
+/* Make form controls behave more like native iPhone controls */
+@supports (-webkit-touch-callout: none){
+  input,
+  select,
+  textarea,
+  button{
+    font-size:16px;
+  }
+
+  .wrap{
+    padding-left:max(12px,env(safe-area-inset-left));
+    padding-right:max(12px,env(safe-area-inset-right));
+    padding-bottom:max(36px,env(safe-area-inset-bottom));
+  }
+
+  .topbar{
+    padding-top:max(0px,env(safe-area-inset-top));
+  }
+
+  .tableWrap{
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+  }
+
+  dialog{
+    max-height:calc(100dvh - 24px);
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+}
+
+/* Mobile cards are intentionally single-column for less horizontal fighting */
+@media(max-width:650px){
+  .metrics{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .marketGrid{
+    grid-template-columns:1fr;
+  }
+
+  .metricCard{
+    min-height:104px;
+    padding:15px;
+  }
+
+  .metric{
+    font-size:21px;
+  }
+
+  .twoPanel{
+    gap:12px;
+  }
+
+  .card{
+    padding:15px;
+    border-radius:14px;
+  }
+
+  .action{
+    padding:11px;
+  }
+
+  .marketTile{
+    padding:14px;
+  }
+
+  #projectionChart{
+    height:175px !important;
+    max-height:175px !important;
+    min-height:175px !important;
+  }
+
+  #rateHistoryChart{
+    height:200px !important;
+    max-height:200px !important;
+    min-height:200px !important;
+  }
+}
+
+
+/* V3.0.5 password fallback */
+#passwordStatus{
+  min-height:16px;
+  color:#b9c7d3;
+}
+#passwordInput{
+  font-family:inherit;
+}
+
+
+/* V3.1 — invisible auto-sync + interactive projection */
+.statusText{
+  transition:opacity .15s ease;
+}
+
+.projectionLab{
+  overflow:hidden;
+}
+
+.graphControls{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:14px 0 12px;
+}
+
+.graphControl{
+  padding:12px;
+  border:1px solid var(--line);
+  background:#0f151c;
+  border-radius:12px;
+}
+
+.controlHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:6px;
+}
+
+.controlHead label{
+  margin:0;
+}
+
+.controlHead strong{
+  white-space:nowrap;
+  font-size:13px;
+}
+
+.graphControl input[type="range"]{
+  width:100%;
+  padding:0;
+  background:transparent;
+  border:none;
+  accent-color:var(--accent);
+}
+
+.rangeEnds{
+  display:flex;
+  justify-content:space-between;
+  font-size:10px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.graphToolbar{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  margin:5px 0 10px;
+}
+
+.rangeButtons{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+}
+
+.rangeButtons button{
+  padding:7px 9px;
+  font-size:12px;
+}
+
+.rangeButtons button.active{
+  border-color:var(--accent);
+  background:#16334e;
+  color:#cfe8ff;
+}
+
+.graphResult{
+  font-size:13px;
+  font-weight:900;
+  text-align:right;
+}
+
+.chartWrap{
+  position:relative;
+  width:100%;
+  touch-action:pan-y;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+#projectionChart{
+  touch-action:pan-y;
+}
+
+.chartTooltip{
+  position:absolute;
+  z-index:5;
+  min-width:120px;
+  pointer-events:none;
+  border:1px solid #48647c;
+  background:rgba(13,17,23,.96);
+  box-shadow:0 8px 24px rgba(0,0,0,.28);
+  border-radius:10px;
+  padding:8px 10px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  font-size:12px;
+  backdrop-filter:blur(5px);
+}
+
+.chartTooltip strong{
+  color:#a8c9e8;
+}
+
+.chartTooltip span{
+  font-size:15px;
+  font-weight:900;
+}
+
+.compactScenarios{
+  margin-top:10px;
+}
+
+@media(max-width:650px){
+  .graphControls{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+
+  .graphToolbar{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .rangeButtons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .rangeButtons button{
+    width:100%;
+    padding:9px 5px;
+  }
+
+  .graphResult{
+    text-align:left;
+  }
+
+  .compactScenarios{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .compactScenarios .scenario{
+    padding:8px;
+  }
+
+  .compactScenarios .scenarioValue{
+    font-size:16px;
+  }
+
+  .compactScenarios .tiny{
+    font-size:9px;
+  }
+}
+
+
+/* V4 — per-user customisation */
+.moduleHidden{
+  display:none !important;
+}
+
+.customiseDialogCard{
+  max-height:calc(100dvh - 28px);
+  overflow:auto;
+}
+
+.customPreview{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:13px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:var(--panel2);
+}
+
+.customPreviewIcon{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+  box-shadow:0 6px 18px rgba(0,0,0,.20);
+}
+
+.moduleToggles{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:9px;
+}
+
+.moduleToggle{
+  display:flex;
+  gap:9px;
+  align-items:center;
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--panel2);
+  color:var(--text);
+}
+
+.moduleToggle input{
+  width:auto;
+  margin:0;
+}
+
+.moduleOrderEditor{
+  display:grid;
+  gap:7px;
+  margin-top:9px;
+}
+
+.moduleOrderRow{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  padding:9px 11px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--panel2);
+}
+
+.orderButtons{
+  display:flex;
+  gap:5px;
+}
+
+.orderButtons button{
+  padding:5px 9px;
+}
+
+html[data-theme="dark"]{
+  --bg:#101419;
+  --panel:#181e24;
+  --panel2:#232b34;
+  --text:#f4f7fa;
+  --muted:#98a4af;
+  --line:#35414d;
+}
+
+html[data-theme="dark"] body{
+  background:linear-gradient(180deg,#101419,#151b21);
+}
+
+html[data-theme="light"]{
+  --bg:#f6f8fa;
+  --panel:#ffffff;
+  --panel2:#edf2f7;
+  --text:#17202a;
+  --muted:#667585;
+  --line:#d0d7de;
+  --good:#1a7f37;
+  --warn:#9a6700;
+  --bad:#cf222e;
+}
+
+html[data-theme="light"] body{
+  background:linear-gradient(180deg,#eef3f8,#f8fafc);
+}
+
+html[data-theme="light"] .card{
+  background:rgba(255,255,255,.97);
+  box-shadow:0 8px 28px rgba(31,45,61,.08);
+}
+
+html[data-theme="light"] input,
+html[data-theme="light"] select,
+html[data-theme="light"] textarea,
+html[data-theme="light"] canvas{
+  background:#ffffff;
+  color:var(--text);
+}
+
+html[data-theme="light"] .actionCentre,
+html[data-theme="light"] .marketCard{
+  background:linear-gradient(135deg,#ffffff,#f3f8fd);
+}
+
+html[data-theme="light"] .action,
+html[data-theme="light"] .marketTile,
+html[data-theme="light"] .scenario,
+html[data-theme="light"] .graphControl,
+html[data-theme="light"] .costRow,
+html[data-theme="light"] .switchRow,
+html[data-theme="light"] .infoBox,
+html[data-theme="light"] .customPreview{
+  background:#f7f9fb;
+}
+
+@media(max-width:650px){
+  .moduleToggles{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* V4.2 — standalone what-if planner */
+.whatIfNotice{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  margin:0 0 10px;
+  padding:9px 11px;
+  border:1px dashed var(--line);
+  border-radius:10px;
+  background:var(--panel2);
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.4;
+}
+.whatIfNotice strong{
+  color:var(--text);
+  white-space:nowrap;
+}
+@media(max-width:650px){
+  .whatIfNotice{
+    flex-direction:column;
+    gap:2px;
+  }
+}
+
+
+/* Web Release Candidate polish */
+.syncMeta{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+}
+
+.actualPlanNote{
+  margin-top:8px;
+  padding:8px 10px;
+  border-left:3px solid var(--accent);
+  border-radius:6px;
+  background:var(--panel2);
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.4;
+}
+
+.warningButton{
+  border-color:#9a6700 !important;
+}
+
+.accountSummaryStrip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin:0 0 12px;
+}
+
+.accountSummaryStrip > div{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:9px 10px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--panel2);
+}
+
+.accountSummaryStrip span{
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+
+.accountSummaryStrip strong{
+  font-size:14px;
+}
+
+.onboardingCard{
+  max-width:680px;
+}
+
+.onboardingHero{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+
+.onboardingHero h2{
+  margin:2px 0 5px;
+}
+
+.onboardingHero p{
+  margin:0;
+  color:var(--muted);
+}
+
+.onboardingIcon{
+  width:58px;
+  height:58px;
+  flex:0 0 58px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  font-size:30px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+}
+
+.onboardingSteps{
+  display:grid;
+  gap:8px;
+  margin:14px 0;
+}
+
+.onboardingStep{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:10px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+
+.onboardingStep > span{
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--accent);
+  color:white;
+  font-weight:800;
+}
+
+.onboardingStep div{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.onboardingStep small{
+  color:var(--muted);
+}
+
+.healthDialogCard{
+  max-width:720px;
+}
+
+.healthSummary{
+  margin-bottom:10px;
+}
+
+.healthScore{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px;
+  border-radius:11px;
+  border:1px solid var(--line);
+  background:var(--panel2);
+}
+
+.healthScore.good{border-color:rgba(46,160,67,.45)}
+.healthScore.warn{border-color:rgba(210,153,34,.55)}
+.healthScore.bad{border-color:rgba(248,81,73,.55)}
+
+.healthScore span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.healthList{
+  display:grid;
+  gap:8px;
+  max-height:50vh;
+  overflow:auto;
+}
+
+.healthIssue{
+  display:grid;
+  grid-template-columns:10px 1fr;
+  gap:10px;
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--panel2);
+}
+
+.healthIssue p{
+  margin:3px 0 0;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.healthDot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  margin-top:5px;
+  background:#8b949e;
+}
+
+.healthIssue.warn .healthDot{background:#d29922}
+.healthIssue.bad .healthDot{background:#f85149}
+.healthIssue.info .healthDot{background:#58a6ff}
+
+.emptyState{
+  text-align:center;
+  color:var(--muted);
+  padding:18px;
+  border:1px dashed var(--line);
+  border-radius:10px;
+}
+
+.emptyState.large{
+  min-height:150px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+}
+
+.emptyState.large strong{
+  color:var(--text);
+}
+
+@media(max-width:760px){
+  .accountSummaryStrip{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:520px){
+  .accountSummaryStrip{
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+  }
+
+  .accountSummaryStrip > div{
+    padding:8px;
+  }
+
+  .healthScore{
+    flex-direction:column;
+  }
+}
+
+
+/* ============================================================
+   Web RC3 — Account intelligence
+   ============================================================ */
+
+.accountClickableRow{
+  cursor:pointer;
+  transition:background .14s ease, transform .08s ease;
+}
+.accountClickableRow:hover{
+  background:color-mix(in srgb,var(--accent) 5%,transparent);
+}
+.accountClickableRow:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:-2px;
+}
+.accountOpenHint{
+  display:inline-flex;
+  margin-left:7px;
+  padding:2px 6px;
+  border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 10%,transparent);
+  color:var(--accent);
+  font-size:9px;
+  font-weight:700;
+  vertical-align:middle;
+}
+.accountViewBtn{
+  color:var(--accent);
+  border-color:color-mix(in srgb,var(--accent) 35%,var(--line));
+}
+
+.accountInsightDialog{
+  width:min(1180px,calc(100vw - 26px));
+  max-width:none;
+}
+.accountInsightCard{
+  width:100%;
+  max-width:none;
+  padding:20px;
+}
+.accountInsightHead{
+  align-items:flex-start;
+}
+.accountInsightIdentity{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.accountInsightGlyph{
+  width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  flex:0 0 52px;
+  border-radius:16px;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 88%,white),var(--accent));
+  color:white;
+  font-size:21px;
+  font-weight:800;
+  box-shadow:0 8px 24px color-mix(in srgb,var(--accent) 18%,transparent);
+}
+.accountInsightIdentity h2{
+  margin:1px 0 5px;
+}
+.accountInsightBadges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+.accountInsightHeaderActions{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.accountInsightHero{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:18px;
+  margin:14px 0 12px;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:
+    linear-gradient(135deg,color-mix(in srgb,var(--accent) 7%,var(--panel)),var(--panel));
+}
+.accountInsightHero > div:not(.accountInsightHeroArrow){
+  min-width:0;
+}
+.accountInsightHero span,
+.accountInsightHero small{
+  display:block;
+  color:var(--muted);
+}
+.accountInsightHero span{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.accountInsightHero strong{
+  display:block;
+  margin:4px 0;
+  font-size:29px;
+  line-height:1;
+  letter-spacing:-.035em;
+}
+.accountInsightHero small{
+  font-size:10px;
+}
+.accountInsightHeroArrow{
+  color:var(--muted);
+  font-size:24px;
+}
+
+.accountInsightToolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  margin:13px 0 10px;
+}
+.accountInsightRange{
+  margin-top:5px;
+}
+.accountInsightHorizonLabel{
+  color:var(--muted);
+  font-size:11px;
+  text-align:right;
+}
+
+.accountInsightMetrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-bottom:10px;
+}
+.accountInsightMetrics > div{
+  min-width:0;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel2);
+}
+.accountInsightMetrics span,
+.accountInsightMetrics small{
+  display:block;
+  color:var(--muted);
+}
+.accountInsightMetrics span{
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.accountInsightMetrics strong{
+  display:block;
+  margin:4px 0;
+  font-size:18px;
+  letter-spacing:-.02em;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.accountInsightMetrics small{
+  font-size:9px;
+  line-height:1.3;
+}
+
+.accountInsightVisualGrid{
+  display:grid;
+  grid-template-columns:minmax(0,1.7fr) minmax(280px,.8fr);
+  gap:10px;
+}
+.accountInsightPanel{
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--panel);
+}
+.accountInsightPanelHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:7px;
+}
+.accountInsightPanelHead h3{
+  margin:0 0 2px;
+  font-size:14px;
+}
+.accountInsightPanelHead p{
+  margin:0;
+  color:var(--muted);
+  font-size:10px;
+}
+.accountChartLegend{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  color:var(--muted);
+  font-size:9px;
+}
+.accountChartLegend span{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.accountChartLegend i{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+}
+.accountChartLegend i.balance{background:#58a6ff}
+.accountChartLegend i.principal{background:#a371f7}
+
+.accountInsightChartWrap{
+  position:relative;
+  height:270px;
+}
+.accountInsightChartWrap canvas{
+  width:100%;
+  height:270px;
+  display:block;
+}
+.accountInsightChartWrap .chartTooltip{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  width:178px;
+  pointer-events:none;
+}
+
+.accountCompositionWrap{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.accountCompositionWrap canvas{
+  width:100%;
+  height:210px;
+}
+.accountCompositionLegend{
+  display:grid;
+  gap:6px;
+  margin-top:2px;
+}
+.accountCompositionLegend > div{
+  display:grid;
+  grid-template-columns:9px 1fr auto auto;
+  align-items:center;
+  gap:7px;
+  font-size:9px;
+}
+.accountCompositionLegend i{
+  width:8px;height:8px;border-radius:50%;
+}
+.accountCompositionLegend span{color:var(--muted)}
+.accountCompositionLegend strong{font-size:10px}
+.accountCompositionLegend small{
+  min-width:42px;
+  text-align:right;
+  color:var(--muted);
+}
+
+.accountInsightTwoCol{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:10px;
+}
+
+.accountInsightNarrative{
+  display:grid;
+  gap:7px;
+}
+.accountInsightNarrativeRow{
+  display:grid;
+  grid-template-columns:31px 1fr;
+  gap:9px;
+  align-items:start;
+  padding:9px;
+  border-radius:11px;
+  background:var(--panel2);
+}
+.accountInsightNarrativeIcon{
+  width:29px;
+  height:29px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:color-mix(in srgb,var(--muted) 10%,transparent);
+  color:var(--muted);
+  font-size:12px;
+  font-weight:800;
+}
+.accountInsightNarrativeRow.good .accountInsightNarrativeIcon{
+  background:color-mix(in srgb,#3fb950 12%,transparent);
+  color:#3fb950;
+}
+.accountInsightNarrativeRow.warn .accountInsightNarrativeIcon{
+  background:color-mix(in srgb,#d29922 12%,transparent);
+  color:#d29922;
+}
+.accountInsightNarrativeRow.bad .accountInsightNarrativeIcon{
+  background:color-mix(in srgb,#f85149 12%,transparent);
+  color:#f85149;
+}
+.accountInsightNarrativeRow.info .accountInsightNarrativeIcon{
+  background:color-mix(in srgb,var(--accent) 12%,transparent);
+  color:var(--accent);
+}
+.accountInsightNarrativeRow strong{
+  font-size:11px;
+}
+.accountInsightNarrativeRow p{
+  margin:3px 0 0;
+  color:var(--muted);
+  font-size:9.5px;
+  line-height:1.35;
+}
+
+.accountInsightTimeline{
+  display:grid;
+}
+.accountTimelineRow{
+  display:grid;
+  grid-template-columns:15px 90px 1fr;
+  gap:8px;
+  min-height:57px;
+}
+.accountTimelineRail{
+  position:relative;
+  display:flex;
+  justify-content:center;
+}
+.accountTimelineRail::after{
+  content:"";
+  position:absolute;
+  top:16px;
+  bottom:-3px;
+  width:1px;
+  background:var(--line);
+}
+.accountTimelineRow:last-child .accountTimelineRail::after{
+  display:none;
+}
+.accountTimelineRail i{
+  position:relative;
+  z-index:1;
+  width:8px;
+  height:8px;
+  margin-top:7px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 4px var(--panel);
+}
+.accountTimelineRow.warn .accountTimelineRail i{background:#d29922}
+.accountTimelineRow.goal .accountTimelineRail i{background:#3fb950}
+.accountTimelineDate{
+  padding-top:2px;
+}
+.accountTimelineDate strong,
+.accountTimelineDate span{
+  display:block;
+}
+.accountTimelineDate strong{font-size:9.5px}
+.accountTimelineDate span{font-size:8.5px;color:var(--muted);margin-top:2px}
+.accountTimelineMain{
+  padding:1px 0 10px;
+}
+.accountTimelineMain strong,
+.accountTimelineMain span{
+  display:block;
+}
+.accountTimelineMain strong{font-size:10.5px}
+.accountTimelineMain span{font-size:9px;color:var(--muted);margin-top:2px;line-height:1.3}
+
+.accountInsightAssumption{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+  padding:10px 12px;
+  border-left:3px solid var(--accent);
+  border-radius:8px;
+  background:var(--panel2);
+  font-size:9.5px;
+  line-height:1.35;
+}
+.accountInsightAssumption strong{
+  white-space:nowrap;
+}
+.accountInsightAssumption span{
+  color:var(--muted);
+}
+
+@media(max-width:900px){
+  .accountInsightVisualGrid{
+    grid-template-columns:1fr;
+  }
+  .accountInsightTwoCol{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:680px){
+  .accountInsightDialog{
+    width:100%;
+    height:100dvh;
+    max-height:none;
+    margin:0;
+    border-radius:0;
+  }
+  .accountInsightCard{
+    min-height:100dvh;
+    padding:14px 12px 28px;
+    border-radius:0;
+  }
+  .accountInsightHead{
+    gap:10px;
+  }
+  .accountInsightGlyph{
+    width:44px;height:44px;flex-basis:44px;border-radius:13px;
+  }
+  .accountInsightHeaderActions > button:first-child{
+    display:none;
+  }
+  .accountInsightHero{
+    grid-template-columns:1fr;
+    gap:9px;
+    padding:14px;
+  }
+  .accountInsightHeroArrow{
+    transform:rotate(90deg);
+    font-size:18px;
+  }
+  .accountInsightHero strong{
+    font-size:25px;
+  }
+  .accountInsightToolbar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .accountInsightHorizonLabel{
+    text-align:left;
+  }
+  .accountInsightRange{
+    display:flex;
+    flex-wrap:wrap;
+  }
+  .accountInsightMetrics{
+    grid-template-columns:1fr 1fr;
+  }
+  .accountInsightPanel{
+    padding:11px;
+  }
+  .accountInsightPanelHead{
+    flex-direction:column;
+  }
+  .accountChartLegend{
+    justify-content:flex-start;
+  }
+  .accountInsightAssumption{
+    flex-direction:column;
+    gap:3px;
+  }
+}
+
+
+/* ============================================================
+   Web RC4 — Intelligence suite
+   ============================================================ */
+.intelligenceSection{overflow:hidden}
+.intelligenceGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.intelligenceTile{min-width:0;padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--panel2)}
+.historyTile,.cashflowTile{grid-column:span 1}
+.miniSectionHead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px}
+.miniSectionHead h3{margin:2px 0 0;font-size:15px}.intelligenceText{font-size:10px;line-height:1.4}
+.paceBadge{padding:5px 8px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-size:10px;font-weight:800;color:var(--muted)}
+.paceBadge.good{color:#3fb950;border-color:color-mix(in srgb,#3fb950 40%,var(--line))}.paceBadge.warn{color:#d29922;border-color:color-mix(in srgb,#d29922 40%,var(--line))}
+.milestoneRail{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:13px}
+.milestone{display:flex;align-items:center;gap:7px;min-width:0;padding:8px;border-radius:11px;background:var(--panel)}
+.milestoneDot{width:27px;height:27px;flex:0 0 27px;display:grid;place-items:center;border-radius:50%;background:var(--panel2);color:var(--muted);font-size:8px;font-weight:800}
+.milestone.reached .milestoneDot{background:color-mix(in srgb,#3fb950 16%,transparent);color:#3fb950}.milestone div:last-child{min-width:0}.milestone strong,.milestone span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.milestone strong{font-size:10px}.milestone span{font-size:8px;color:var(--muted);margin-top:2px}
+.reportGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.reportGrid>div{padding:9px;border-radius:11px;background:var(--panel)}.reportGrid span,.reportGrid small{display:block;color:var(--muted)}.reportGrid span{font-size:8.5px;text-transform:uppercase;letter-spacing:.05em}.reportGrid strong{display:block;font-size:16px;margin:4px 0}.reportGrid small{font-size:8.5px;line-height:1.25}.positiveText{color:#3fb950}.negativeText{color:#f85149}
+.historyChartWrap{height:220px;position:relative}.historyChartWrap canvas{width:100%;height:220px;display:block}
+.cashflowList{display:grid;gap:6px}.cashflowRow{display:grid;grid-template-columns:38px 30px 1fr;gap:8px;align-items:center;padding:8px;border-radius:11px;background:var(--panel)}.cashflowDate{text-align:center}.cashflowDate strong,.cashflowDate span{display:block}.cashflowDate strong{font-size:14px}.cashflowDate span{font-size:8px;color:var(--muted);text-transform:uppercase}.cashflowIcon{width:28px;height:28px;display:grid;place-items:center;border-radius:9px;background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent);font-weight:800}.cashflowMain strong,.cashflowMain span{display:block}.cashflowMain strong{font-size:10.5px}.cashflowMain span{font-size:9px;color:var(--muted);margin-top:2px}
+.interestTop{padding:10px;border-radius:12px;background:var(--panel)}.interestTop span,.interestTop small{display:block;color:var(--muted)}.interestTop span{font-size:9px}.interestTop strong{display:block;font-size:22px;margin:4px 0}.interestTop small{font-size:9px;line-height:1.3}.interestMonths{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-top:7px}.interestMonths>div{padding:7px 4px;text-align:center;border-radius:9px;background:var(--panel)}.interestMonths span,.interestMonths strong{display:block}.interestMonths span{font-size:8px;color:var(--muted)}.interestMonths strong{font-size:9px;margin-top:3px}
+.transferPlanList{display:grid;gap:6px}.transferRow{width:100%;min-height:0;display:flex;align-items:center;gap:8px;padding:9px 10px;border:0;border-radius:11px;background:var(--panel);color:var(--text);text-align:left;font:inherit}.transferRow div{flex:1;min-width:0}.transferRow strong,.transferRow span,.transferRow small{display:block}.transferRow strong{font-size:10.5px}.transferRow span,.transferRow small{font-size:8.8px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oneOffList{display:grid;gap:6px}.oneOffRow{display:grid;grid-template-columns:86px 1fr auto;gap:8px;align-items:center;padding:8px;border-radius:11px;background:var(--panel)}.oneOffDate strong,.oneOffDate span,.oneOffMain strong,.oneOffMain span{display:block}.oneOffDate strong{font-size:9px}.oneOffDate span{font-size:8px;color:var(--muted);text-transform:capitalize;margin-top:2px}.oneOffMain strong{font-size:10.5px}.oneOffMain span{font-size:8.8px;color:var(--muted);margin-top:2px}.oneOffRow.received{opacity:.72}.oneOffRow.cancelled{opacity:.45}
+.scenarioPresetBar{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0 10px}.scenarioPresetBar>span{color:var(--muted);font-size:9px;margin-right:2px}.scenarioPresetBar button{min-height:28px;padding:4px 8px;border-radius:999px;font-size:9px}.scenarioPresetBar button.active{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,transparent)}
+.graphExtraControls{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}.graphExtraControls label{display:flex;flex-direction:column;gap:4px;color:var(--muted);font-size:9px}.graphExtraControls input,.graphExtraControls select{min-height:35px}
+.accountFilterBar{display:grid;grid-template-columns:minmax(180px,1fr) 150px 180px auto;gap:7px;align-items:center;margin:0 0 10px}.accountFilterBar input,.accountFilterBar select{min-height:38px}
+.snapshotDialog{width:min(720px,calc(100vw - 28px));max-width:none}.snapshotDialogCard{max-width:none}.snapshotHero{padding:18px;border-radius:17px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 10%,var(--panel2)),var(--panel2));border:1px solid var(--line)}.snapshotHero span,.snapshotHero small{display:block;color:var(--muted)}.snapshotHero strong{display:block;font-size:34px;letter-spacing:-.04em;margin:5px 0 13px}.snapshotHero .progress{margin-bottom:7px}.snapshotGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.snapshotGrid>div{padding:11px;border-radius:12px;background:var(--panel2);border:1px solid var(--line)}.snapshotGrid span{display:block;color:var(--muted);font-size:9px}.snapshotGrid strong{display:block;margin-top:4px;font-size:14px}.snapshotAccounts{display:grid;gap:5px;margin-top:9px}.snapshotAccounts>div{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:9px;border-radius:11px;background:var(--panel2)}.snapshotAccounts span{font-size:10px}.snapshotAccounts strong{font-size:11px}.snapshotAccounts small{grid-column:1/-1;color:var(--muted);font-size:8.5px}.snapshotActions{justify-content:flex-end;margin-top:10px}
+.privacyMode .metric,.privacyMode .marketRate,.privacyMode .scenarioValue,.privacyMode .oppMoney,.privacyMode .accountSummaryStrip strong,.privacyMode #progressText,.privacyMode #graphResult,.privacyMode .accountInsightHero strong,.privacyMode .accountInsightMetrics strong,.privacyMode .nativeListValue,.privacyMode .snapshotContent strong,.privacyMode .reportGrid strong,.privacyMode .interestLedger strong,.privacyMode .oneOffMain span,.privacyMode table tbody td:nth-child(3),.privacyMode table tbody td:nth-child(5){filter:blur(7px);user-select:none}
+.oneOffDialogCard{max-width:620px}
+@media(max-width:920px){.intelligenceGrid{grid-template-columns:1fr}.accountFilterBar{grid-template-columns:1fr 1fr}.accountFilterBar input{grid-column:1/-1}.graphExtraControls{grid-template-columns:1fr 1fr}.milestoneRail{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.reportGrid{grid-template-columns:1fr 1fr}.interestMonths{grid-template-columns:repeat(3,1fr)}.accountFilterBar{grid-template-columns:1fr}.accountFilterBar input{grid-column:auto}.graphExtraControls{grid-template-columns:1fr}.oneOffRow{grid-template-columns:70px 1fr}.oneOffRow .rowActions{grid-column:1/-1;justify-content:flex-end}.snapshotGrid{grid-template-columns:1fr}.milestoneRail{grid-template-columns:1fr 1fr}}
+@media print{
+  body.printingSnapshot{background:white!important;color:black!important}
+  body.printingSnapshot .wrap,body.printingSnapshot dialog:not(#snapshotDialog){display:none!important}
+  body.printingSnapshot #snapshotDialog{display:block!important;position:static!important;width:100%!important;max-width:none!important;margin:0!important;border:0!important;background:white!important;color:black!important}
+  body.printingSnapshot #snapshotDialog::backdrop{display:none!important}
+  body.printingSnapshot .snapshotActions,body.printingSnapshot .dialogHead .iconBtn{display:none!important}
+  body.printingSnapshot .dialogCard{box-shadow:none!important;border:0!important;background:white!important;color:black!important}
+}
+
+
+/* ============================================================
+   Web RC5 — Savings Shop
+   ============================================================ */
+
+.savingsShop{
+  position:relative;
+  overflow:hidden;
+}
+.savingsShop::before{
+  content:"";
+  position:absolute;
+  width:320px;
+  height:320px;
+  right:-150px;
+  top:-190px;
+  border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 12%,transparent);
+  filter:blur(2px);
+  pointer-events:none;
+}
+.savingsShopHead{
+  position:relative;
+  z-index:1;
+}
+.shopEyebrow{
+  color:var(--accent);
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+  margin-bottom:4px;
+}
+.shopHeadMeta{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.buttonLink{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:32px;
+  padding:6px 10px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:var(--panel2);
+  color:var(--text);
+  text-decoration:none;
+  font-size:10px;
+  font-weight:650;
+}
+.buttonLink:hover{
+  border-color:color-mix(in srgb,var(--accent) 50%,var(--line));
+  color:var(--accent);
+}
+
+.shopTabs{
+  position:relative;
+  z-index:1;
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  padding:4px 1px 8px;
+  margin:5px 0 8px;
+  scrollbar-width:thin;
+}
+.shopTabs button{
+  flex:0 0 auto;
+  border-radius:999px;
+  padding:7px 11px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+  color:var(--muted);
+  font-size:10px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.shopTabs button:hover{
+  color:var(--text);
+  border-color:color-mix(in srgb,var(--accent) 35%,var(--line));
+}
+.shopTabs button.active{
+  color:white;
+  background:var(--accent);
+  border-color:var(--accent);
+  box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 18%,transparent);
+}
+
+.shopIntro{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  margin:5px 0 12px;
+  padding:12px 13px;
+  border-radius:13px;
+  background:color-mix(in srgb,var(--accent) 5%,var(--panel2));
+  border:1px solid color-mix(in srgb,var(--accent) 16%,var(--line));
+}
+.shopIntro h3{
+  margin:0 0 3px;
+  font-size:14px;
+}
+.shopIntro p{
+  margin:0;
+  max-width:760px;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.45;
+}
+.shopCategoryNote{
+  max-width:340px;
+  color:var(--text);
+  font-size:9.5px;
+  line-height:1.4;
+  font-weight:600;
+}
+
+.shopCards{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;
+}
+.shopCard{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:330px;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:
+    linear-gradient(160deg,color-mix(in srgb,var(--accent) 3%,var(--panel)),var(--panel));
+  transition:transform .14s ease,border-color .14s ease,box-shadow .14s ease;
+}
+.shopCard:hover{
+  transform:translateY(-2px);
+  border-color:color-mix(in srgb,var(--accent) 30%,var(--line));
+  box-shadow:0 12px 28px rgba(0,0,0,.12);
+}
+.shopCardTop{
+  display:grid;
+  grid-template-columns:25px 1fr;
+  gap:8px;
+  align-items:start;
+}
+.shopRank{
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  background:color-mix(in srgb,var(--accent) 11%,var(--panel2));
+  color:var(--accent);
+  font-size:10px;
+  font-weight:800;
+}
+.shopProviderWrap{
+  min-width:0;
+}
+.shopProvider{
+  color:var(--text);
+  font-size:11px;
+  font-weight:800;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.shopProduct{
+  margin-top:2px;
+  color:var(--muted);
+  font-size:8.7px;
+  line-height:1.25;
+  min-height:22px;
+}
+.shopFlag{
+  grid-column:1/-1;
+  display:inline-flex;
+  justify-self:start;
+  max-width:100%;
+  padding:3px 6px;
+  border-radius:999px;
+  background:color-mix(in srgb,var(--accent) 9%,transparent);
+  color:var(--accent);
+  font-size:8px;
+  font-weight:750;
+}
+
+.shopRateRow{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding:11px 0 9px;
+  border-bottom:1px solid var(--line);
+}
+.shopRateRow strong{
+  font-size:24px;
+  line-height:1;
+  letter-spacing:-.04em;
+}
+.shopRateRow span{
+  color:var(--muted);
+  font-size:8.5px;
+}
+
+.shopFacts{
+  display:grid;
+  gap:7px;
+  margin-top:9px;
+}
+.shopFacts > div{
+  display:grid;
+  grid-template-columns:66px 1fr;
+  gap:6px;
+  align-items:start;
+}
+.shopFacts span{
+  color:var(--muted);
+  font-size:8px;
+}
+.shopFacts strong{
+  color:var(--text);
+  font-size:8.5px;
+  line-height:1.3;
+  font-weight:650;
+}
+
+.shopDetail{
+  margin:9px 0 8px;
+  color:var(--muted);
+  font-size:8.5px;
+  line-height:1.42;
+}
+.shopExample{
+  margin-top:auto;
+  margin-bottom:7px;
+  padding:6px 7px;
+  border-radius:8px;
+  background:var(--panel2);
+  color:var(--muted);
+  font-size:8px;
+}
+.shopCheckBtn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:auto;
+  min-height:31px;
+  border-radius:9px;
+  border:1px solid color-mix(in srgb,var(--accent) 28%,var(--line));
+  background:color-mix(in srgb,var(--accent) 6%,var(--panel2));
+  color:var(--accent);
+  text-decoration:none;
+  font-size:9px;
+  font-weight:750;
+}
+.shopCheckBtn:hover{
+  background:color-mix(in srgb,var(--accent) 11%,var(--panel2));
+}
+
+.shopSafety{
+  display:grid;
+  grid-template-columns:30px 1fr;
+  gap:9px;
+  margin-top:11px;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--panel2);
+}
+.shopSafetyIcon{
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:color-mix(in srgb,var(--accent) 11%,transparent);
+  color:var(--accent);
+  font-weight:800;
+}
+.shopSafety strong,
+.shopSafety span{
+  display:block;
+}
+.shopSafety strong{
+  margin-bottom:2px;
+  font-size:9.5px;
+}
+.shopSafety span{
+  color:var(--muted);
+  font-size:8.5px;
+  line-height:1.45;
+}
+
+.shopFlash{
+  animation:shopFlash 800ms ease;
+}
+@keyframes shopFlash{
+  0%,100%{box-shadow:none}
+  35%{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+}
+
+@media(max-width:1180px){
+  .shopCards{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+@media(max-width:760px){
+  .shopIntro{
+    flex-direction:column;
+    gap:7px;
+  }
+  .shopCategoryNote{
+    max-width:none;
+  }
+  .shopCards{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(max-width:520px){
+  .shopHeadMeta{
+    justify-content:flex-start;
+  }
+  .shopCards{
+    grid-template-columns:1fr;
+  }
+  .shopCard{
+    min-height:0;
+  }
+  .shopRateRow{
+    flex-direction:row;
+    align-items:end;
+    justify-content:space-between;
+  }
+  .shopFacts > div{
+    grid-template-columns:82px 1fr;
+  }
+}
+
+
+/* RC5.1 — Savings Shop live refresh */
+.shopRefreshStatus{
+  min-width:0;
+  max-width:245px;
+  color:var(--muted);
+  font-size:8.5px;
+  line-height:1.25;
+  text-align:right;
+}
+#refreshShopBtn:disabled{
+  opacity:.68;
+  cursor:wait;
+}
+@media(max-width:760px){
+  .shopRefreshStatus{
+    order:4;
+    max-width:none;
+    width:100%;
+    text-align:left;
+  }
+}
+
+
+/* ============================================================
+   Web RC5.2 — visual polish pass
+   No finance/sync/projection behaviour is changed here.
+   ============================================================ */
+
+html{
+  scroll-behavior:smooth;
+}
+html[data-theme="light"]{
+  color-scheme:light;
+}
+html:not([data-theme="light"]){
+  color-scheme:dark;
+}
+
+body{
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  position:relative;
+  isolation:isolate;
+}
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:.18;
+}
+body::before{
+  width:360px;
+  height:360px;
+  left:-150px;
+  top:12vh;
+  background:var(--accent);
+}
+body::after{
+  width:320px;
+  height:320px;
+  right:-150px;
+  top:48vh;
+  background:var(--purple);
+  opacity:.09;
+}
+html[data-theme="light"] body::before{opacity:.08}
+html[data-theme="light"] body::after{opacity:.05}
+
+::selection{
+  background:color-mix(in srgb,var(--accent) 32%,transparent);
+  color:var(--text);
+}
+
+*{
+  scrollbar-width:thin;
+  scrollbar-color:color-mix(in srgb,var(--muted) 45%,transparent) transparent;
+}
+*::-webkit-scrollbar{
+  width:9px;
+  height:9px;
+}
+*::-webkit-scrollbar-track{background:transparent}
+*::-webkit-scrollbar-thumb{
+  background:color-mix(in srgb,var(--muted) 32%,transparent);
+  border:2px solid transparent;
+  background-clip:padding-box;
+  border-radius:999px;
+}
+*::-webkit-scrollbar-thumb:hover{
+  background:color-mix(in srgb,var(--muted) 52%,transparent);
+  border:2px solid transparent;
+  background-clip:padding-box;
+}
+
+/* Header */
+.topbar{
+  position:relative;
+  padding:4px 3px 15px;
+}
+.topbar::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--line) 92%,transparent),transparent);
+}
+.topbar h1{
+  text-wrap:balance;
+}
+.actions{
+  align-items:center;
+}
+.actions button{
+  background:color-mix(in srgb,var(--panel2) 78%,transparent);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+
+/* Controls */
+button,
+.buttonLink,
+.sourceBtn,
+.shopCheckBtn{
+  transition:
+    transform .14s cubic-bezier(.2,.8,.2,1),
+    border-color .16s ease,
+    background-color .16s ease,
+    color .16s ease,
+    box-shadow .16s ease,
+    opacity .16s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+button:hover,
+.buttonLink:hover,
+.sourceBtn:hover,
+.shopCheckBtn:hover{
+  box-shadow:0 5px 16px rgba(0,0,0,.12);
+}
+button:active,
+.buttonLink:active,
+.sourceBtn:active,
+.shopCheckBtn:active,
+.pressed{
+  transform:translateY(1px) scale(.985) !important;
+}
+button:focus-visible,
+.buttonLink:focus-visible,
+.sourceBtn:focus-visible,
+.shopCheckBtn:focus-visible,
+.marketLinkTile:focus-visible,
+.accountClickableRow:focus-visible{
+  outline:2px solid color-mix(in srgb,var(--accent) 88%,white);
+  outline-offset:2px;
+}
+
+input,
+select,
+textarea{
+  transition:
+    border-color .16s ease,
+    box-shadow .16s ease,
+    background-color .16s ease;
+}
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 15%,transparent);
+}
+
+/* Main surfaces */
+.card{
+  transition:
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background-color .22s ease;
+}
+.metricCard,
+.intelligenceTile,
+.marketTile,
+.scenario,
+.action,
+.opp,
+.cashflowRow,
+.transferRow,
+.oneOffRow,
+.accountInsightPanel,
+.accountInsightMetrics > div,
+.snapshotGrid > div{
+  transition:
+    transform .18s cubic-bezier(.2,.8,.2,1),
+    border-color .18s ease,
+    box-shadow .18s ease,
+    background-color .18s ease;
+}
+
+.metricCard{
+  position:relative;
+  overflow:hidden;
+}
+.metricCard::after{
+  content:"";
+  position:absolute;
+  inset:auto -15% -65% 25%;
+  height:95px;
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 13%,transparent),transparent 68%);
+  pointer-events:none;
+}
+
+@media (hover:hover) and (pointer:fine){
+  .metricCard:hover,
+  .intelligenceTile:hover{
+    transform:translateY(-2px);
+    border-color:color-mix(in srgb,var(--accent) 26%,var(--line));
+    box-shadow:0 12px 34px rgba(0,0,0,.16);
+  }
+  .marketTile:hover,
+  .scenario:hover,
+  .action:hover,
+  .opp:hover,
+  .cashflowRow:hover,
+  .transferRow:hover,
+  .oneOffRow:hover{
+    transform:translateY(-1px);
+  }
+}
+
+/* Live progress / sliders */
+#progressBar{
+  transition:width .48s cubic-bezier(.22,1,.36,1);
+  position:relative;
+  overflow:hidden;
+}
+#progressBar::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(105deg,transparent 15%,rgba(255,255,255,.22) 45%,transparent 75%);
+  transform:translateX(-120%);
+  animation:progressSheen 4.8s ease-in-out infinite;
+}
+@keyframes progressSheen{
+  0%,62%{transform:translateX(-120%)}
+  82%,100%{transform:translateX(120%)}
+}
+
+input[type="range"]{
+  cursor:pointer;
+}
+input[type="range"]::-webkit-slider-thumb{
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+input[type="range"]:active::-webkit-slider-thumb{
+  transform:scale(1.12);
+}
+
+/* Tables */
+tbody tr{
+  transition:background-color .14s ease;
+}
+tbody tr:hover{
+  background:color-mix(in srgb,var(--accent) 3.5%,transparent);
+}
+
+/* Dialogs */
+dialog[open]::backdrop{
+  animation:polishBackdropIn .18s ease both;
+}
+dialog[open] .dialogCard{
+  animation:polishDialogIn .22s cubic-bezier(.16,1,.3,1) both;
+  box-shadow:0 24px 70px rgba(0,0,0,.34);
+}
+@keyframes polishBackdropIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes polishDialogIn{
+  from{opacity:0;transform:translateY(8px) scale(.985)}
+  to{opacity:1;transform:none}
+}
+
+/* Savings Shop */
+.shopTabs{
+  scroll-snap-type:x proximity;
+}
+.shopTabs button{
+  scroll-snap-align:start;
+  transition:
+    transform .16s ease,
+    background-color .18s ease,
+    border-color .18s ease,
+    color .18s ease,
+    box-shadow .18s ease;
+}
+.shopTabs button.active{
+  transform:translateY(-1px);
+}
+.shopCard{
+  will-change:transform;
+}
+.shopCardsEntering .shopCard{
+  animation:shopCardEnter .34s cubic-bezier(.16,1,.3,1) both;
+}
+.shopCardsEntering .shopCard:nth-child(2){animation-delay:34ms}
+.shopCardsEntering .shopCard:nth-child(3){animation-delay:68ms}
+.shopCardsEntering .shopCard:nth-child(4){animation-delay:102ms}
+.shopCardsEntering .shopCard:nth-child(5){animation-delay:136ms}
+@keyframes shopCardEnter{
+  from{opacity:0;transform:translateY(7px) scale(.993)}
+  to{opacity:1;transform:none}
+}
+.shopRateRow strong{
+  text-shadow:0 0 28px color-mix(in srgb,var(--accent) 10%,transparent);
+}
+#refreshShopBtn:disabled{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+}
+#refreshShopBtn:disabled::after{
+  content:"";
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  border:2px solid color-mix(in srgb,currentColor 32%,transparent);
+  border-top-color:currentColor;
+  animation:shopSpin .7s linear infinite;
+}
+@keyframes shopSpin{to{transform:rotate(360deg)}}
+.shopRefreshStatus:not(:empty)::before{
+  content:"";
+  display:inline-block;
+  width:6px;
+  height:6px;
+  margin-right:5px;
+  border-radius:50%;
+  background:var(--good);
+  vertical-align:1px;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--good) 9%,transparent);
+}
+
+/* Section reveals happen once only and do not affect functionality */
+html.js-polish .revealReady{
+  opacity:0;
+  transform:translateY(10px);
+  transition:
+    opacity .42s ease var(--reveal-delay,0ms),
+    transform .42s cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms);
+}
+html.js-polish .revealReady.is-visible{
+  opacity:1;
+  transform:none;
+}
+
+/* Subtle status/header change after leaving the top of the page */
+body.pageScrolled .topbar::after{
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--accent) 26%,var(--line)),transparent);
+}
+
+/* Charts */
+canvas{
+  transition:border-color .18s ease,box-shadow .18s ease;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.018);
+}
+@media (hover:hover) and (pointer:fine){
+  canvas:hover{
+    border-color:color-mix(in srgb,var(--accent) 22%,var(--line));
+  }
+}
+
+/* Light theme tuning */
+html[data-theme="light"] button:hover,
+html[data-theme="light"] .buttonLink:hover,
+html[data-theme="light"] .sourceBtn:hover,
+html[data-theme="light"] .shopCheckBtn:hover{
+  box-shadow:0 5px 16px rgba(31,45,61,.10);
+}
+html[data-theme="light"] dialog[open] .dialogCard{
+  box-shadow:0 24px 70px rgba(31,45,61,.18);
+}
+
+/* Mobile stays calm: no whole-card hopping under a finger */
+@media(max-width:650px){
+  .topbar{
+    padding-bottom:12px;
+  }
+  .actions{
+    gap:6px;
+  }
+  .actions button{
+    min-height:42px;
+  }
+  .shopTabs{
+    margin-left:-2px;
+    margin-right:-2px;
+    padding-left:2px;
+    padding-right:2px;
+  }
+}
+
+/* Accessibility / battery / motion preference */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,
+  *::before,
+  *::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  html.js-polish .revealReady{
+    opacity:1 !important;
+    transform:none !important;
+  }
+}
+
+
+/* ==============================================================
+   Savings Hub iOS V5 — Apple-inspired native presentation layer
+   ============================================================== */
+
+.nativeApp{display:none}
+
+html.native-ios{
+  --ios-blue:#0a84ff;
+  --ios-green:#30d158;
+  --ios-red:#ff453a;
+  --ios-orange:#ff9f0a;
+  --ios-purple:#bf5af2;
+  --ios-teal:#64d2ff;
+  --ios-indigo:#5e5ce6;
+  --ios-mint:#63e6be;
+  --ios-gray:#8e8e93;
+  --ios-tab-h:82px;
+  --ios-page-x:16px;
+  -webkit-tap-highlight-color:transparent;
+  background:var(--bg);
+  overscroll-behavior:none;
+}
+
+html.native-ios body{
+  margin:0;
+  min-height:100dvh;
+  padding:0;
+  overflow:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  letter-spacing:-.012em;
+}
+
+html.native-ios .nativeWebsiteEngine{
+  position:fixed !important;
+  width:1px !important;
+  height:1px !important;
+  overflow:hidden !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  left:-10000px !important;
+  top:-10000px !important;
+}
+
+html.native-ios .nativeApp{
+  display:block;
+  position:fixed;
+  inset:0;
+  z-index:900;
+  background:
+    radial-gradient(circle at 20% -10%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 32%),
+    var(--bg);
+}
+
+.nativePages{
+  position:absolute;
+  inset:0 0 0 0;
+}
+
+.nativePage{
+  display:none;
+  position:absolute;
+  inset:0;
+}
+
+.nativePage.active{
+  display:block;
+  animation:iosPageIn .18s ease-out both;
+}
+
+@keyframes iosPageIn{
+  from{opacity:.72;transform:translateY(3px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.nativePageScroll{
+  position:absolute;
+  inset:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  padding:
+    calc(env(safe-area-inset-top) + 16px)
+    var(--ios-page-x)
+    calc(var(--ios-tab-h) + env(safe-area-inset-bottom) + 28px);
+  scrollbar-width:none;
+}
+
+.nativePageScroll::-webkit-scrollbar{display:none}
+
+.nativePageHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  min-height:72px;
+  padding:8px 2px 18px;
+}
+
+.nativePageEyebrow{
+  font-size:10px;
+  line-height:1.2;
+  font-weight:800;
+  letter-spacing:.12em;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+
+.nativePageHeader h1{
+  margin:0;
+  font-size:34px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:-.035em;
+  color:var(--text);
+}
+
+.nativeRoundButton{
+  width:40px;
+  height:40px;
+  min-height:40px;
+  padding:0;
+  display:grid;
+  place-items:center;
+  border:0;
+  border-radius:50%;
+  background:color-mix(in srgb,var(--panel) 92%,transparent);
+  color:var(--text);
+  box-shadow:0 1px 0 rgba(255,255,255,.04) inset;
+}
+
+.nativeRoundButton.accent{
+  background:var(--accent);
+  color:#fff;
+}
+
+.nativeRoundButton svg{
+  width:21px;
+  height:21px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.nativeBottomSpacer{height:18px}
+
+/* --- Tab bar --- */
+.nativeTabBar{
+  position:fixed;
+  left:10px;
+  right:10px;
+  bottom:calc(7px + env(safe-area-inset-bottom));
+  height:var(--ios-tab-h);
+  display:flex;
+  align-items:stretch;
+  padding:7px 6px;
+  border-radius:26px;
+  border:1px solid color-mix(in srgb,var(--line) 66%,transparent);
+  background:color-mix(in srgb,var(--panel) 76%,transparent);
+  backdrop-filter:saturate(190%) blur(28px);
+  -webkit-backdrop-filter:saturate(190%) blur(28px);
+  box-shadow:0 12px 42px rgba(0,0,0,.26);
+  z-index:1400;
+}
+
+.nativeTab{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  margin:0;
+  padding:5px 1px;
+  border:0;
+  border-radius:19px;
+  background:transparent;
+  color:var(--muted);
+  font:inherit;
+  font-size:10px;
+  font-weight:650;
+  transition:color .15s ease,background .15s ease,transform .08s ease;
+}
+
+.nativeTab:active{transform:scale(.94)}
+.nativeTab.active{
+  color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 9%,transparent);
+}
+
+.nativeTabIcon{
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+}
+.nativeTabIcon svg{
+  width:23px;
+  height:23px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.85;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* --- General native cards --- */
+.nativeGlassCard,
+.nativeBalanceHero,
+.nativeSummaryHero,
+.nativeRealPlanCard,
+.nativeMarketPulse,
+.nativeBestMoveCard,
+.nativeProfileCard{
+  border:1px solid color-mix(in srgb,var(--line) 74%,transparent);
+  background:color-mix(in srgb,var(--panel) 94%,transparent);
+  border-radius:22px;
+  box-shadow:none;
+}
+
+.nativeSectionHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:24px 3px 9px;
+}
+
+.nativeSectionHeader h2{
+  margin:0;
+  font-size:20px;
+  font-weight:750;
+  letter-spacing:-.025em;
+}
+
+.nativeSectionHint{
+  font-size:11px;
+  color:var(--muted);
+}
+
+.nativeTextButton{
+  min-height:0;
+  border:0;
+  padding:3px 0;
+  background:transparent;
+  color:var(--accent);
+  font:inherit;
+  font-size:13px;
+  font-weight:650;
+}
+
+.nativeChevron{
+  color:var(--muted);
+  font-size:24px;
+  line-height:1;
+  font-weight:300;
+}
+
+.nativeEmptyState{
+  min-height:135px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:5px;
+  padding:20px;
+  color:var(--muted);
+}
+.nativeEmptyState.compact{min-height:105px}
+.nativeEmptyState strong{color:var(--text)}
+.nativeEmptyState span{font-size:12px;max-width:260px}
+.nativeEmptyIcon{
+  width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;
+  margin-bottom:3px;
+  background:color-mix(in srgb,var(--accent) 12%,transparent);
+  color:var(--accent);
+  font-size:20px;
+  font-weight:800;
+}
+.nativeEmptyMini{
+  padding:18px 10px;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* --- Home --- */
+.nativeBalanceHero{
+  padding:20px 18px 16px;
+  background:
+    linear-gradient(145deg,color-mix(in srgb,var(--accent) 13%,var(--panel)),var(--panel) 52%);
+}
+
+.nativeHeroTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.nativeHeroLabel{
+  display:block;
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+
+.nativeHeroBalance{
+  font-size:39px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:-.045em;
+}
+
+.nativeSyncBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 9px;
+  border-radius:999px;
+  background:color-mix(in srgb,var(--bg) 48%,transparent);
+  color:var(--muted);
+  font-size:10px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.nativeSyncBadge i{
+  width:6px;height:6px;border-radius:50%;background:var(--ios-gray)
+}
+.nativeSyncBadge.ok i{background:var(--ios-green)}
+.nativeSyncBadge.local i{background:var(--ios-orange)}
+
+.nativeHeroProgressTrack,
+.nativeMiniProgress{
+  height:6px;
+  overflow:hidden;
+  border-radius:999px;
+  background:color-mix(in srgb,var(--line) 70%,transparent);
+}
+.nativeHeroProgressTrack{margin-top:20px}
+.nativeHeroProgressTrack div,
+.nativeMiniProgress div{
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 60%,#fff));
+}
+
+.nativeHeroProgressText{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:8px;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.nativeQuickStats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:9px;
+}
+.nativeQuickStat{
+  min-width:0;
+  padding:12px 10px;
+  border:1px solid color-mix(in srgb,var(--line) 72%,transparent);
+  border-radius:18px;
+  background:var(--panel);
+}
+.nativeQuickStat span,.nativeQuickStat small{display:block}
+.nativeQuickStat span{
+  color:var(--muted);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.nativeQuickStat strong{
+  display:block;
+  margin:4px 0 3px;
+  font-size:16px;
+  letter-spacing:-.025em;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.nativeQuickStat small{
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.25;
+}
+
+.nativeListCard{
+  overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--line) 74%,transparent);
+  border-radius:20px;
+  background:var(--panel);
+}
+
+.nativeListRow{
+  width:100%;
+  min-height:68px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:11px 13px;
+  margin:0;
+  border:0;
+  border-bottom:1px solid color-mix(in srgb,var(--line) 72%,transparent);
+  border-radius:0;
+  background:transparent;
+  color:var(--text);
+  text-align:left;
+  text-decoration:none;
+  font:inherit;
+}
+.nativeListRow:last-child{border-bottom:0}
+.nativeListRow:active{background:color-mix(in srgb,var(--line) 18%,transparent)}
+
+.nativeListMain{
+  min-width:0;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.nativeListMain strong{
+  font-size:13px;
+  line-height:1.22;
+}
+.nativeListMain small{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.25;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.nativeListValue{
+  flex:0 0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:2px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--text);
+}
+.nativeListValue small{font-size:9px;color:var(--muted);font-weight:500}
+.goodText{color:var(--ios-green)}
+
+.nativeActionIcon,
+.nativeRateOpportunityIcon{
+  width:34px;height:34px;flex:0 0 34px;
+  display:grid;place-items:center;
+  border-radius:11px;
+  background:color-mix(in srgb,var(--accent) 10%,transparent);
+  color:var(--accent);
+  font-size:15px;
+  font-weight:800;
+}
+
+.nativeAccountGlyph{
+  width:38px;height:38px;flex:0 0 38px;
+  display:grid;place-items:center;
+  border-radius:12px;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 90%,#fff),var(--accent));
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+  box-shadow:0 5px 15px color-mix(in srgb,var(--accent) 18%,transparent);
+}
+.nativeAccountGlyph.large{width:44px;height:44px;border-radius:14px;font-size:17px}
+
+.nativeMarketPulse{
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  gap:14px;
+  padding:17px;
+}
+.nativeMarketPulse > div:not(.nativeMarketDivider){display:flex;flex-direction:column}
+.nativeMarketPulse span{font-size:10px;color:var(--muted)}
+.nativeMarketPulse strong{font-size:25px;margin:3px 0;letter-spacing:-.03em}
+.nativeMarketPulse small{font-size:10px;color:var(--muted)}
+.nativeMarketDivider{background:var(--line)}
+
+.nativeMarketInsight{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  margin-top:8px;
+  padding:11px 13px;
+  border-radius:16px;
+  background:color-mix(in srgb,var(--ios-green) 8%,var(--panel));
+  border:1px solid color-mix(in srgb,var(--ios-green) 22%,var(--line));
+}
+.nativeMarketInsight div{display:flex;flex-direction:column;gap:2px}
+.nativeMarketInsight strong{font-size:12px}
+.nativeMarketInsight small{font-size:10px;color:var(--muted);line-height:1.3}
+.nativeInsightDot{width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:var(--ios-orange);margin-top:3px}
+.nativeInsightDot.good{background:var(--ios-green)}
+
+/* --- Accounts --- */
+.nativeSummaryHero{
+  padding:17px 18px;
+}
+.nativeSummaryHero > span{font-size:11px;color:var(--muted)}
+.nativeSummaryHero > strong{
+  display:block;
+  margin:3px 0 11px;
+  font-size:33px;
+  letter-spacing:-.04em;
+}
+.nativeSummaryMeta{
+  display:flex;
+  gap:8px;
+}
+.nativeSummaryMeta span{
+  padding:6px 8px;
+  border-radius:9px;
+  background:var(--panel2);
+  color:var(--muted);
+  font-size:10px;
+}
+
+.nativeAccountCards{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+.nativeAccountCard{
+  width:100%;
+  min-height:0;
+  display:block;
+  padding:16px;
+  margin:0;
+  text-align:left;
+  border:1px solid color-mix(in srgb,var(--line) 74%,transparent);
+  border-radius:22px;
+  background:var(--panel);
+  color:var(--text);
+  font:inherit;
+}
+.nativeAccountCard:active{transform:scale(.992)}
+
+.nativeAccountCardTop{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+.nativeAccountIdentity{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.nativeAccountIdentity strong{font-size:14px}
+.nativeAccountIdentity span{font-size:10px;color:var(--muted)}
+
+.nativeAccountMoney{
+  margin:18px 0 14px;
+  font-size:30px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:-.04em;
+}
+.nativeAccountFacts{
+  display:grid;
+  grid-template-columns:.7fr .9fr 1.35fr;
+  gap:8px;
+}
+.nativeAccountFacts span{min-width:0}
+.nativeAccountFacts small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.nativeAccountFacts strong{
+  display:block;
+  margin-top:3px;
+  font-size:11px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.nativeMiniProgress{margin-top:14px;height:4px}
+.nativeMiniCaption{margin-top:5px;color:var(--muted);font-size:9px}
+
+.nativeEmptyCard{
+  width:100%;
+  min-height:190px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  border:1px dashed var(--line);
+  border-radius:22px;
+  background:transparent;
+  color:var(--muted);
+  font:inherit;
+}
+.nativeEmptyCard div{font-size:30px;color:var(--accent)}
+.nativeEmptyCard strong{color:var(--text);font-size:15px}
+.nativeEmptyCard span{font-size:11px}
+
+/* --- Planner --- */
+.nativeRealPlanCard{
+  padding:17px;
+}
+.nativeRealPlanHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+.nativeRealPlanHead span{display:block;color:var(--muted);font-size:11px}
+.nativeRealPlanHead strong{
+  display:block;
+  margin-top:2px;
+  font-size:31px;
+  letter-spacing:-.035em;
+}
+.nativePlanBadge{
+  min-width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;
+  background:color-mix(in srgb,var(--accent) 12%,transparent);
+  color:var(--accent);
+  font-size:12px;
+  font-weight:800;
+}
+.nativeRealPlanMeta{
+  display:flex;justify-content:space-between;
+  color:var(--muted);font-size:10px;margin-top:7px
+}
+.nativePlanInputs{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px
+}
+.nativePlanInputs label{
+  padding:9px 10px;border-radius:12px;background:var(--panel2)
+}
+.nativePlanInputs label span{
+  display:block;color:var(--muted);font-size:9px;margin-bottom:3px
+}
+.nativePlanInputs input{
+  width:100%;min-height:0;padding:0;border:0;background:transparent;color:var(--text);
+  font:inherit;font-size:12px;font-weight:650
+}
+
+.nativePlannerCard{padding:16px}
+.nativeSliderHeader{display:flex;justify-content:space-between;align-items:center}
+.nativeSliderHeader.second{margin-top:16px}
+.nativeSliderHeader div{display:flex;justify-content:space-between;width:100%;gap:12px}
+.nativeSliderHeader span{font-size:11px;color:var(--muted)}
+.nativeSliderHeader strong{font-size:12px}
+.nativeRange{
+  width:100%;height:30px;margin:3px 0 0;padding:0;border:0;background:transparent;accent-color:var(--accent)
+}
+
+.nativeSegmentedControl{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  padding:3px;margin-top:13px;border-radius:11px;background:var(--panel2)
+}
+.nativeSegmentedControl button{
+  min-height:31px;margin:0;padding:0;border:0;border-radius:8px;background:transparent;
+  color:var(--muted);font:inherit;font-size:10px;font-weight:700
+}
+.nativeSegmentedControl button.active{
+  background:var(--panel);
+  color:var(--text);
+  box-shadow:0 1px 5px rgba(0,0,0,.18)
+}
+
+.nativePlannerResult{
+  display:flex;justify-content:space-between;align-items:baseline;margin-top:15px
+}
+.nativePlannerResult span{font-size:11px;color:var(--muted)}
+.nativePlannerResult strong{font-size:21px;letter-spacing:-.025em}
+
+.nativeChartShell{height:220px;margin-top:5px}
+.nativeChartShell canvas{width:100%;height:220px;display:block}
+
+.nativeScenarioStrip{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px
+}
+.nativeScenarioStrip > div{
+  min-width:0;padding:9px 8px;border-radius:12px;background:var(--panel2)
+}
+.nativeScenarioStrip > div.selected{
+  background:color-mix(in srgb,var(--accent) 10%,var(--panel2));
+  outline:1px solid color-mix(in srgb,var(--accent) 40%,transparent)
+}
+.nativeScenarioStrip span,.nativeScenarioStrip small{display:block;color:var(--muted);font-size:8px}
+.nativeScenarioStrip strong{
+  display:block;margin:3px 0;font-size:12px;overflow:hidden;text-overflow:ellipsis
+}
+
+.nativeBudgetHeadline{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px 15px 8px
+}
+.nativeBudgetHeadline span{display:block;color:var(--muted);font-size:9px}
+.nativeBudgetHeadline strong{display:block;margin-top:3px;font-size:18px}
+.nativeBudgetRows,.nativeBonusRows{padding:4px 10px 8px}
+.nativeBudgetRow,.nativeBonusRow{
+  display:grid;align-items:center;gap:6px;padding:8px 0;border-top:1px solid var(--line)
+}
+.nativeBudgetRow{grid-template-columns:1fr 105px 28px}
+.nativeBonusRow{grid-template-columns:1.1fr 70px 86px 28px}
+.nativeBudgetRow input,.nativeBonusRow input,.nativeBonusRow select{
+  min-width:0;min-height:34px;padding:6px 7px;border-radius:9px;background:var(--panel2);border:0;color:var(--text);font:inherit;font-size:11px
+}
+.nativeBudgetAmount{display:flex;align-items:center;background:var(--panel2);border-radius:9px;padding-left:7px}
+.nativeBudgetAmount span{color:var(--muted);font-size:10px}
+.nativeBudgetAmount input{padding-left:3px;width:100%}
+.nativeBudgetRow button,.nativeBonusRow button{
+  width:28px;height:28px;min-height:28px;padding:0;border:0;border-radius:50%;background:color-mix(in srgb,var(--ios-red) 12%,transparent);color:var(--ios-red)
+}
+.nativeInsetButton{
+  width:calc(100% - 20px);min-height:38px;margin:0 10px 10px;border:0;border-radius:11px;
+  background:var(--panel2);color:var(--accent);font:inherit;font-size:12px;font-weight:700
+}
+
+/* --- Rates --- */
+.nativeRateHeadlines{
+  display:grid;grid-template-columns:1fr 1fr;gap:9px
+}
+.nativeRateHero{
+  min-height:154px;
+  display:flex;flex-direction:column;
+  padding:15px;
+  border:1px solid color-mix(in srgb,var(--line) 74%,transparent);
+  border-radius:22px;
+  background:var(--panel);
+  color:var(--text);
+  text-decoration:none;
+}
+.nativeRateHero span{font-size:10px;color:var(--muted)}
+.nativeRateHero strong{font-size:31px;letter-spacing:-.04em;margin:8px 0 2px}
+.nativeRateHero small{font-size:10px;color:var(--muted);line-height:1.25}
+.nativeRateHero em{margin-top:auto;color:var(--accent);font-size:9px;font-style:normal;font-weight:700}
+.nativeRateHero.easy{background:linear-gradient(145deg,color-mix(in srgb,var(--ios-blue) 8%,var(--panel)),var(--panel))}
+.nativeRateHero.regular{background:linear-gradient(145deg,color-mix(in srgb,var(--ios-green) 8%,var(--panel)),var(--panel))}
+
+.nativeBestMoveCard{
+  min-height:86px;
+  display:flex;align-items:flex-start;gap:11px;padding:14px;
+  color:var(--text);text-decoration:none
+}
+.nativeBestMoveCard div{flex:1;display:flex;flex-direction:column;gap:3px}
+.nativeBestMoveCard strong{font-size:13px;line-height:1.25}
+.nativeBestMoveCard small{font-size:10px;color:var(--muted);line-height:1.3}
+.nativeBestMoveCard.neutral{align-items:center}
+
+.nativeChartCard{padding:12px 10px 8px}
+.nativeChartCard canvas{width:100%;height:210px}
+.nativeChartLegend{display:flex;gap:14px;padding:1px 5px 5px;color:var(--muted);font-size:9px}
+.nativeChartLegend span{display:flex;align-items:center;gap:5px}
+.nativeChartLegend i{width:7px;height:7px;border-radius:50%}
+.nativeChartLegend i.blue{background:#0a84ff}
+.nativeChartLegend i.green{background:#30d158}
+
+/* --- Settings --- */
+.nativeAvatar{
+  width:40px;height:40px;display:grid;place-items:center;border-radius:50%;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 86%,#fff),var(--accent));
+  color:#fff;font-size:18px;font-weight:800
+}
+.nativeProfileCard{
+  display:flex;align-items:center;gap:12px;padding:14px
+}
+.nativeProfileIcon{
+  width:46px;height:46px;display:grid;place-items:center;border-radius:15px;
+  background:var(--panel2);font-size:23px
+}
+.nativeProfileCard > div:nth-child(2){
+  flex:1;min-width:0;display:flex;flex-direction:column;gap:2px
+}
+.nativeProfileCard > div:nth-child(2) strong{font-size:14px}
+.nativeProfileCard > div:nth-child(2) span{font-size:10px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+
+.nativeSettingsGroup{
+  overflow:hidden;
+  margin-top:22px;
+  border:1px solid color-mix(in srgb,var(--line) 74%,transparent);
+  border-radius:20px;
+  background:var(--panel);
+}
+.nativeSettingsLabel{
+  margin:0;padding:11px 13px 5px;
+  color:var(--muted);font-size:9px;font-weight:750;letter-spacing:.08em
+}
+.nativeSettingsRow{
+  width:100%;min-height:61px;display:flex;align-items:center;gap:11px;
+  margin:0;padding:9px 12px;border:0;border-bottom:1px solid var(--line);border-radius:0;
+  background:transparent;color:var(--text);text-align:left;font:inherit
+}
+.nativeSettingsRow:last-child{border-bottom:0}
+.nativeSettingsRow:active{background:color-mix(in srgb,var(--line) 18%,transparent)}
+.nativeSettingsGlyph{
+  width:31px;height:31px;flex:0 0 31px;display:grid;place-items:center;border-radius:8px;color:#fff
+}
+.nativeSettingsGlyph svg{
+  width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round
+}
+.nativeSettingsGlyph.purple{background:var(--ios-purple)}
+.nativeSettingsGlyph.red{background:var(--ios-red)}
+.nativeSettingsGlyph.green{background:var(--ios-green)}
+.nativeSettingsGlyph.blue{background:var(--ios-blue)}
+.nativeSettingsGlyph.orange{background:var(--ios-orange)}
+.nativeSettingsGlyph.teal{background:#32ade6}
+.nativeSettingsGlyph.gray{background:var(--ios-gray)}
+.nativeSettingsGlyph.indigo{background:var(--ios-indigo)}
+.nativeSettingsGlyph.mint{background:#00c7be}
+.nativeSettingsMain{
+  flex:1;min-width:0;display:flex;flex-direction:column;gap:2px
+}
+.nativeSettingsMain strong{font-size:13px;font-weight:650}
+.nativeSettingsMain small{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nativeSettingsRow select{
+  width:auto;min-width:62px;min-height:31px;padding:4px 24px 4px 8px;border:0;border-radius:8px;background:var(--panel2);color:var(--text);font:inherit;font-size:11px
+}
+.dangerGroup{margin-top:24px;border-color:color-mix(in srgb,var(--ios-red) 25%,var(--line))}
+.dangerRow .nativeSettingsMain strong{color:var(--ios-red)}
+.nativeVersion{text-align:center;color:var(--muted);font-size:10px;margin-top:18px}
+
+/* --- Pull-to-refresh --- */
+.nativePullIndicator{
+  position:fixed;
+  z-index:1500;
+  top:calc(env(safe-area-inset-top) + 4px);
+  left:50%;
+  transform:translate(-50%,calc(-42px + min(var(--pull,0px),42px)));
+  opacity:0;
+  display:flex;align-items:center;gap:7px;
+  padding:7px 10px;border-radius:999px;
+  background:color-mix(in srgb,var(--panel) 86%,transparent);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid var(--line);
+  color:var(--muted);font-size:10px;
+  transition:opacity .12s ease;
+}
+.nativePullIndicator.visible{opacity:1}
+.nativePullSpinner{
+  width:13px;height:13px;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--muted) 35%,transparent);border-top-color:var(--accent)
+}
+.nativePullIndicator.loading .nativePullSpinner{animation:iosSpin .7s linear infinite}
+@keyframes iosSpin{to{transform:rotate(360deg)}}
+
+/* --- Existing HTML dialogs become iOS sheets --- */
+html.native-ios dialog.nativeSheet{
+  width:100%;
+  max-width:none;
+  max-height:91dvh;
+  margin:auto 0 0;
+  padding:0;
+  border:0;
+  border-radius:28px 28px 0 0;
+  background:var(--panel);
+  color:var(--text);
+}
+html.native-ios dialog.nativeSheet::backdrop{
+  background:rgba(0,0,0,.42);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+html.native-ios dialog.nativeSheet .dialogCard{
+  max-width:none;
+  max-height:calc(91dvh - env(safe-area-inset-bottom));
+  overflow:auto;
+  padding:18px 16px calc(18px + env(safe-area-inset-bottom));
+  border-radius:28px 28px 0 0;
+}
+html.native-ios dialog.nativeSheet .dialogCard::before{
+  content:"";
+  display:block;
+  width:36px;height:5px;border-radius:999px;background:color-mix(in srgb,var(--muted) 42%,transparent);
+  margin:-8px auto 13px;
+}
+html.native-ios dialog.nativeSheet input,
+html.native-ios dialog.nativeSheet select,
+html.native-ios dialog.nativeSheet textarea{
+  min-height:44px;
+  border-radius:12px;
+  font-size:16px;
+}
+html.native-ios dialog.nativeSheet button{
+  min-height:42px;
+  border-radius:12px;
+}
+
+/* Light-mode translucency */
+html.native-ios[data-theme="light"] .nativeTabBar{
+  background:rgba(248,250,252,.82)
+}
+html.native-ios[data-theme="light"] .nativeApp{
+  background:
+    radial-gradient(circle at 20% -10%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 32%),
+    #f2f2f7
+}
+
+/* Small devices */
+@media(max-width:390px){
+  html.native-ios{--ios-page-x:13px}
+  .nativeHeroBalance{font-size:35px}
+  .nativeQuickStat{padding:11px 8px}
+  .nativeQuickStat strong{font-size:14px}
+  .nativeAccountFacts{grid-template-columns:.7fr .8fr 1.2fr}
+  .nativeBudgetRow{grid-template-columns:1fr 92px 28px}
+  .nativeBonusRow{grid-template-columns:1fr 62px 80px 28px}
+}
+
+@media(max-width:350px){
+  .nativeQuickStats{grid-template-columns:1fr}
+  .nativeRateHeadlines{grid-template-columns:1fr}
+  .nativeScenarioStrip{grid-template-columns:1fr}
+}
+
+
+.nativeOnlyAction{display:none}
+html.native-ios .nativeOnlyAction{display:inline-flex}
+html.native-ios .nativeDeleteAccountBtn{
+  margin-left:auto;
+  background:color-mix(in srgb,var(--ios-red) 12%,transparent);
+  border-color:color-mix(in srgb,var(--ios-red) 28%,transparent);
+  color:var(--ios-red);
+}
+.nativeFxInline{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin:2px 10px 8px;
+  padding:9px 10px;
+  border-radius:11px;
+  background:var(--panel2);
+  color:var(--muted);
+  font-size:10px;
+}
+.nativeFxInline label{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  color:var(--muted);
+  font-size:10px;
+}
+.nativeFxInline input{
+  width:58px;
+  min-height:29px;
+  padding:4px 6px;
+  border:0;
+  border-radius:8px;
+  background:var(--panel);
+  color:var(--text);
+  font:inherit;
+  font-size:11px;
+}
+
+
+
+/* ============================================================
+   Savings Hub iOS V6 — intelligence + shop + restrained polish
+   ============================================================ */
+html.native-ios{--ios-tab-h:80px}
+html.native-ios .wrap{display:block}
+
+.nativePage.active.nativeEnterForward{animation:nativeV6Forward .19s cubic-bezier(.2,.8,.2,1) both}
+.nativePage.active.nativeEnterBack{animation:nativeV6Back .19s cubic-bezier(.2,.8,.2,1) both}
+@keyframes nativeV6Forward{from{opacity:.72;transform:translateX(5px)}to{opacity:1;transform:none}}
+@keyframes nativeV6Back{from{opacity:.72;transform:translateX(-5px)}to{opacity:1;transform:none}}
+
+.nativeRoundButton,.nativeTab,.nativeAccountCard,.nativeListRow,.nativeSettingsRow,.nativeShopCard,.nativeScenarioPresets button,.nativeShopTabs button{
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .13s ease,background-color .16s ease,border-color .16s ease,color .16s ease,box-shadow .16s ease,opacity .16s ease;
+}
+.nativeRoundButton:active,.nativeAccountCard:active,.nativeShopCard:active{transform:scale(.975)}
+.nativeListRow:active,.nativeSettingsRow:active{transform:scale(.992)}
+
+.nativePill{display:inline-flex;align-items:center;padding:5px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);font-size:10px;font-weight:700}
+.nativePill.good{color:var(--ios-green);background:color-mix(in srgb,var(--ios-green) 10%,var(--panel2))}
+.nativePill.warn{color:var(--ios-orange);background:color-mix(in srgb,var(--ios-orange) 10%,var(--panel2))}
+
+.nativeGoalPaceCard{padding:16px 15px}
+.nativeGoalPaceTop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.nativeGoalPaceTop strong{font-size:15px;line-height:1.25}
+.nativeGoalPaceTop p{margin:4px 0 0;color:var(--muted);font-size:10px;line-height:1.35}
+.nativeMilestones{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:14px}
+.nativeMilestone{min-width:0;padding:9px 7px;border-radius:13px;background:var(--panel2);border:1px solid transparent}
+.nativeMilestone.reached{border-color:color-mix(in srgb,var(--ios-green) 24%,transparent);background:color-mix(in srgb,var(--ios-green) 7%,var(--panel2))}
+.nativeMilestone b,.nativeMilestone span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nativeMilestone b{font-size:10px}.nativeMilestone span{margin-top:3px;color:var(--muted);font-size:8px}
+
+.nativeMonthlyReport{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.nativeReportCell{padding:12px;border:1px solid color-mix(in srgb,var(--line) 74%,transparent);border-radius:17px;background:var(--panel)}
+.nativeReportCell span,.nativeReportCell small{display:block;color:var(--muted)}
+.nativeReportCell span{font-size:9px;text-transform:uppercase;letter-spacing:.05em}.nativeReportCell strong{display:block;margin:4px 0 2px;font-size:17px}.nativeReportCell small{font-size:9px;line-height:1.25}
+.nativeHistoryCard{padding:10px}.nativeHistoryCard canvas{width:100%;height:210px}
+
+.nativeCashflowDate{width:39px;flex:0 0 39px;text-align:center}.nativeCashflowDate strong,.nativeCashflowDate span{display:block}.nativeCashflowDate strong{font-size:14px}.nativeCashflowDate span{font-size:9px;color:var(--muted);text-transform:uppercase}
+.nativeCashflowGlyph{width:31px;height:31px;display:grid;place-items:center;flex:0 0 31px;border-radius:10px;background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent);font-size:12px;font-weight:800}
+
+.nativeAccountTools{margin-top:10px;padding:10px;border:1px solid color-mix(in srgb,var(--line) 74%,transparent);border-radius:19px;background:var(--panel)}
+.nativeSearchBox{height:42px;display:flex;align-items:center;gap:8px;padding:0 11px;border-radius:12px;background:var(--panel2)}
+.nativeSearchBox svg{width:17px;height:17px;fill:none;stroke:var(--muted);stroke-width:1.8}.nativeSearchBox input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font:inherit;font-size:14px}
+.nativeAccountFilters{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.nativeAccountFilters select{min-width:0;height:38px;border:0;border-radius:11px;background:var(--panel2);color:var(--text);font:inherit;font-size:11px;padding:0 9px}
+.nativeAccountOutlook{display:flex;justify-content:space-between;gap:8px;margin-top:12px;padding-top:11px;border-top:1px solid var(--line);color:var(--muted);font-size:9px}.nativeAccountOutlook strong{color:var(--text);font-size:10px}
+
+.nativeScenarioPresets,.nativeShopTabs{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:1px 1px 8px}.nativeScenarioPresets::-webkit-scrollbar,.nativeShopTabs::-webkit-scrollbar{display:none}
+.nativeScenarioPresets button,.nativeShopTabs button{flex:0 0 auto;min-height:34px;padding:6px 11px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--muted);font:inherit;font-size:10px;font-weight:700}
+.nativeScenarioPresets button.active,.nativeShopTabs button.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 5px 15px color-mix(in srgb,var(--accent) 16%,transparent)}
+.nativeScenarioInputs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 10px}.nativeScenarioInputs label{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-size:9px}.nativeScenarioInputs label:last-child{grid-column:1/-1}.nativeScenarioInputs input,.nativeScenarioInputs select{width:100%;min-height:39px;border:0;border-radius:11px;background:var(--panel2);color:var(--text);font:inherit;font-size:13px;padding:7px 9px}.nativeMoneyInput{display:flex;align-items:center;border-radius:11px;background:var(--panel2);padding-left:9px}.nativeMoneyInput b{font-size:12px}.nativeMoneyInput input{padding-left:4px}
+
+.nativeOneOffActions{display:flex;gap:6px;margin-left:auto}.nativeMiniAction{min-height:30px;padding:5px 8px;border:0;border-radius:9px;background:var(--panel2);color:var(--accent);font:inherit;font-size:9px;font-weight:700}.nativeMiniAction.danger{color:var(--ios-red)}
+.nativeTransferGlyph{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:color-mix(in srgb,var(--ios-purple) 10%,transparent);color:var(--ios-purple);font-size:16px}
+
+.nativeShopStatus{min-height:18px;margin:-5px 2px 8px;color:var(--muted);font-size:10px}.nativeShopIntro{padding:13px 14px;margin-bottom:10px;border:1px solid color-mix(in srgb,var(--accent) 18%,var(--line));border-radius:18px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 7%,var(--panel)),var(--panel))}.nativeShopIntro strong{display:block;font-size:15px}.nativeShopIntro span{display:block;margin-top:4px;color:var(--muted);font-size:10px;line-height:1.35}
+.nativeShopCards{display:grid;gap:9px}.nativeShopCard{display:block;width:100%;padding:15px;border:1px solid color-mix(in srgb,var(--line) 74%,transparent);border-radius:21px;background:var(--panel);color:var(--text);text-decoration:none}.nativeShopCardTop{display:flex;align-items:flex-start;gap:10px}.nativeShopRank{width:28px;height:28px;display:grid;place-items:center;flex:0 0 28px;border-radius:9px;background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent);font-size:11px;font-weight:800}.nativeShopIdentity{flex:1;min-width:0}.nativeShopIdentity strong,.nativeShopIdentity span{display:block}.nativeShopIdentity strong{font-size:13px}.nativeShopIdentity span{margin-top:2px;color:var(--muted);font-size:10px}.nativeShopFlag{padding:4px 7px;border-radius:999px;background:var(--panel2);color:var(--muted);font-size:8px;font-weight:700}.nativeShopRate{display:flex;align-items:end;justify-content:space-between;gap:8px;margin:15px 0 12px}.nativeShopRate strong{font-size:30px;line-height:1;letter-spacing:-.04em}.nativeShopRate span{color:var(--muted);font-size:9px;text-align:right}.nativeShopFacts{display:grid;grid-template-columns:1fr 1fr;gap:7px}.nativeShopFact{padding:8px;border-radius:11px;background:var(--panel2)}.nativeShopFact span,.nativeShopFact strong{display:block}.nativeShopFact span{color:var(--muted);font-size:8px}.nativeShopFact strong{margin-top:2px;font-size:9px;line-height:1.25}.nativeShopDetail{margin:10px 0 0;color:var(--muted);font-size:9px;line-height:1.4}.nativeShopSource{display:flex;justify-content:space-between;align-items:center;margin-top:11px;padding-top:10px;border-top:1px solid var(--line);color:var(--accent);font-size:9px;font-weight:700}
+.nativeShopCard.nativeShopEnter{animation:nativeShopEnter .24s cubic-bezier(.2,.8,.2,1) both}@keyframes nativeShopEnter{from{opacity:.65;transform:translateY(4px)}to{opacity:1;transform:none}}
+.nativeRefreshSpinning svg{animation:iosSpin .7s linear infinite}
+
+.nativeSettingsRow .nativeToggleState{padding:5px 8px;border-radius:999px;background:var(--panel2);color:var(--muted);font-size:9px;font-weight:700}
+
+/* Native privacy mode covers all custom iOS money figures. */
+.privacyMode .nativeMoney,.privacyMode .nativeHeroBalance,.privacyMode .nativeQuickStat strong,.privacyMode .nativeSummaryHero>strong,.privacyMode .nativeAccountMoney,.privacyMode .nativeReportCell strong,.privacyMode .nativeGoalPaceCard .nativeMilestone b,.privacyMode .nativeShopRate strong,.privacyMode .nativeRateHero strong{filter:blur(7px);user-select:none}
+
+html.native-ios dialog.nativeSheet[open] .dialogCard{animation:nativeSheetUp .22s cubic-bezier(.2,.8,.2,1) both}@keyframes nativeSheetUp{from{opacity:.8;transform:translateY(14px)}to{opacity:1;transform:none}}
+html.native-ios dialog#accountInsightDialog.nativeSheet{max-height:96dvh}html.native-ios dialog#accountInsightDialog.nativeSheet .dialogCard{max-height:calc(96dvh - env(safe-area-inset-bottom))}
+html.native-ios dialog#snapshotDialog.nativeSheet .snapshotActions #printSnapshotBtn{display:none}
+
+@media(max-width:370px){.nativeMilestones{grid-template-columns:1fr 1fr}.nativeScenarioInputs{grid-template-columns:1fr}.nativeScenarioInputs label:last-child{grid-column:auto}.nativeShopFacts{grid-template-columns:1fr}.nativeMonthlyReport{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){.nativePage.active,.nativePage.active.nativeEnterForward,.nativePage.active.nativeEnterBack,.nativeShopCard.nativeShopEnter,html.native-ios dialog.nativeSheet[open] .dialogCard{animation:none!important}.nativeRoundButton,.nativeTab,.nativeAccountCard,.nativeListRow,.nativeSettingsRow,.nativeShopCard{transition:none!important}}
+
+
+/* ============================================================
+   iOS V6.1 — swipe-between-tabs QoL
+   ============================================================ */
+
+.nativePage.nativeSwipeTracking{
+  animation:none!important;
+  transform:translate3d(var(--native-swipe-x,0),0,0);
+  will-change:transform;
+}
+
+.nativePage.nativeSwipeSnapBack{
+  animation:none!important;
+  transform:translate3d(0,0,0);
+  transition:transform .17s cubic-bezier(.2,.8,.2,1);
+}
+
+/* Keep the gesture feeling native rather than like a draggable carousel. */
+.nativePages{
+  touch-action:pan-y;
+  overscroll-behavior-x:none;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .nativePage.nativeSwipeTracking,
+  .nativePage.nativeSwipeSnapBack{
+    transform:none!important;
+    transition:none!important;
+  }
+}
+
+
+/* ============================================================
+   Savings Hub Android V6.1
+   Reuses the tested native V6 shell with restrained Android tuning.
+   ============================================================ */
+
+html.native-android{
+  --android-system-font:Roboto,"Google Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ios-tab-h:76px;
+  --ios-page-x:15px;
+}
+
+html.native-android body{
+  font-family:var(--android-system-font);
+  overscroll-behavior:none;
+}
+
+/* Android status bar is non-overlay, so the WebView already begins below it. */
+html.native-android .nativePageScroll{
+  padding-top:14px;
+}
+
+/* Slightly tighter, Material-friendly floating navigation while preserving V6 structure. */
+html.native-android .nativeTabBar{
+  left:12px;
+  right:12px;
+  bottom:calc(8px + env(safe-area-inset-bottom));
+  height:var(--ios-tab-h);
+  border-radius:24px;
+  padding:6px;
+  box-shadow:0 10px 34px rgba(0,0,0,.24);
+}
+
+html.native-android .nativeTab{
+  border-radius:18px;
+}
+
+html.native-android .nativeRoundButton{
+  border-radius:15px;
+}
+
+html.native-android .nativeAccountCard,
+html.native-android .nativeGlassCard,
+html.native-android .nativeShopCard,
+html.native-android .nativeSettingsGroup{
+  box-shadow:0 1px 0 rgba(255,255,255,.018) inset;
+}
+
+/* Android sheets are a touch less 'iPhone handle' heavy. */
+html.native-android dialog.nativeSheet .dialogCard{
+  border-radius:22px 22px 0 0;
+}
+html.native-android dialog.nativeSheet .dialogCard::before{
+  width:34px;
+  height:4px;
+}
+
+/* Finger swipe and page animation remain deliberately restrained. */
+html.native-android .nativePage.active{
+  animation-duration:.16s;
+}
+html.native-android .nativePage.active.nativeEnterForward{
+  animation-name:nativeAndroidForward;
+}
+html.native-android .nativePage.active.nativeEnterBack{
+  animation-name:nativeAndroidBack;
+}
+@keyframes nativeAndroidForward{
+  from{opacity:.78;transform:translateX(5px)}
+  to{opacity:1;transform:none}
+}
+@keyframes nativeAndroidBack{
+  from{opacity:.78;transform:translateX(-5px)}
+  to{opacity:1;transform:none}
+}
+
+/* Keep touch targets comfortably Android-sized. */
+html.native-android .nativeSettingsRow,
+html.native-android .nativeListRow{
+  min-height:50px;
+}
+html.native-android button,
+html.native-android input,
+html.native-android select{
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* Avoid font zoom/odd input appearance in Android WebView. */
+html.native-android input,
+html.native-android select,
+html.native-android textarea{
+  font-family:var(--android-system-font);
+}
+
+/* Android back dismisses sheets; make backdrop feel slightly firmer. */
+html.native-android dialog.nativeSheet::backdrop{
+  background:rgba(0,0,0,.48);
+}
+
+@media(prefers-reduced-motion:reduce){
+  html.native-android .nativePage.active,
+  html.native-android .nativePage.active.nativeEnterForward,
+  html.native-android .nativePage.active.nativeEnterBack{
+    animation:none!important;
+  }
+}

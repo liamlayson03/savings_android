@@ -1,0 +1,27 @@
+SAVINGS HUB ANDROID V6.1 — QUICK GITHUB SETUP
+
+Recommended new private repo name:
+    savings_android
+
+Inside this extracted folder:
+
+    git init
+    git branch -M main
+    git add .
+    git commit -m "Initial Savings Hub Android V6.1"
+    git remote add origin https://github.com/liamlayson03/savings_android.git
+    git push -u origin main
+
+Then:
+    GitHub → savings_android → Actions
+    → Build Savings Hub Android V6.1 APK
+    → Run workflow
+
+Download:
+    SavingsHub-Android-V6.1-apk
+
+The APK inside is installable directly on an Android phone.
+
+IMPORTANT:
+The Savings Shop live refresh still uses the same `savings-shop` Supabase Edge Function.
+You do not need a separate Android Supabase project or database.

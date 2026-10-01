@@ -1,0 +1,24 @@
+{
+  "appId": "uk.co.savingshub.app",
+  "appName": "Savings Hub",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#0d1117",
+    "allowMixedContent": false,
+    "captureInput": true
+  },
+  "plugins": {
+    "StatusBar": {
+      "overlaysWebView": false
+    },
+    "SplashScreen": {
+      "launchShowDuration": 900,
+      "launchAutoHide": true,
+      "backgroundColor": "#0d1117",
+      "showSpinner": false
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_savings_hub"
+    }
+  }
+}

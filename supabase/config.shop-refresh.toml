@@ -1,0 +1,4 @@
+# Optional Supabase CLI config snippet for the Savings Shop function.
+# Keep JWT verification enabled: the iOS/web app invokes this while signed in.
+[functions.savings-shop]
+verify_jwt = true

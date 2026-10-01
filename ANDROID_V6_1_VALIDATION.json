@@ -1,0 +1,18 @@
+{
+  "javascript_syntax": "PASS",
+  "workflow_yaml": "PASS",
+  "unexpected_missing_static_ids": [],
+  "android_dependency_present": true,
+  "android_platform_detection": true,
+  "android_back_button": true,
+  "android_status_bar_handling": true,
+  "swipe_navigation_retained": true,
+  "cloud_safety_retained": true,
+  "what_if_fix_retained": true,
+  "account_intelligence_retained": true,
+  "shop_refresh_retained": true,
+  "same_supabase_profile_model": true,
+  "same_app_id": true,
+  "icon_sources_present": true,
+  "splash_sources_present": true
+}
